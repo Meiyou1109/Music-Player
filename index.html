@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music Player</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jsmediatags@3.9.7/dist/jsmediatags.min.js"></script>
+</head>
+<body>
+  <!-- Hidden audio -->
+  <audio id="audio" src=""></audio>
+
+  <div class="main-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">🎵 MusicApp</div>
+      <nav class="nav-links">
+        <div class="nav-item" onclick="showLibrary()">Thư viện</div>
+        <div class="nav-item" onclick="showPlaylist()">Danh sách phát</div>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="content-area">
+      <h3 id="section-title">Thư viện</h3>
+      <div id="library-controls" class="song-list-controls" style="display: none;">
+        <input type="checkbox" id="select-all-library"> Chọn tất cả
+        <button id="add-to-present-library">➕ Vào danh sách phát hiện tại</button>
+        <button id="add-to-playlist-library">📁 Vào playlist khác</button>
+      </div>
+
+      <ul id="library-list" class="list-group"></ul>
+      <div id="playlist-list" class="playlist-grid" style="display: none;"></div>
+
+      <div id="playlist-detail" style="display: none;">
+        <div class="playlist-detail-header">
+          <button id="back-to-playlists">←</button>
+          <h2 id="playlist-detail-title"></h2>
+          <button id="play-this-playlist" title="Phát toàn bộ playlist">▶️</button>
+        </div>
+        <div id="playlist-controls" class="song-list-controls" style="display: none;">
+            <input type="checkbox" id="select-all-playlist"> Chọn tất cả
+            <button id="add-to-present-playlist">➕ Vào danh sách phát hiện tại</button>
+            <button id="add-to-playlist-playlist">📁 Vào playlist khác</button>
+          </div>
+        <ul id="playlist-songs" class="list-group"></ul>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer player -->
+  <div id="footer-player">
+    <div class="footer-left">
+      <div class="song-info">
+        <div class="song-title-wrapper">
+          <div id="song-title">Chưa chọn bài hát</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-center">
+      <div class="footer-controls">
+        <button id="shuffle" class="btn btn-light btn-sm">🔀</button>
+        <button id="prev" class="btn btn-light btn-sm">⏮️</button>
+        <button id="play-pause" class="btn btn-light btn-sm">▶️</button>
+        <button id="next" class="btn btn-light btn-sm">⏭️</button>
+        <button id="repeat" class="btn btn-light btn-sm">🔁</button>
+      </div>
+      <div class="progress-container">
+        <span id="current-time">00:00</span>
+        <input type="range" id="progress" value="0" max="100" step="0.1" class="form-range" disabled>
+        <span id="duration">00:00</span>
+        <button id="rewind-10" title="Tua lại 10s">⏪10s</button>
+        <button id="forward-10" title="Tua nhanh 10s">10s⏩</button>
+      </div>
+    </div>
+
+    <div class="footer-right">
+      <div class="volume-wrapper">
+        <button id="mute-toggle">🔊</button>
+        <input type="range" id="volume" value="100" max="100" step="0.1" class="form-range" />
+        <button id="toggle-present-sidebar" class="btn btn-light btn-sm">
+        <img src="resources\playlist.png" alt="Present Playlist" style="width: 18px; height: 18px;" />
+      </button>
+      </div>
+      
+
+    </div>
+
+  </div>
+
+  <div id="present-playlist-sidebar" class="playlist-sidebar hidden">
+  <div class="playlist-sidebar-header">
+    <span>Danh sách đang phát</span>
+    <button id="close-present-sidebar">×</button>
+  </div>
+  <ul id="present-playlist-list"></ul>
+</div>
+
+
+  <script src="script.js"></script>
+
+  <!-- Popup tạo playlist -->
+<div id="create-popup" class="popup-overlay" style="display: none;">
+  <div class="popup-box" id="popup-box">
+    <button id="popup-close" class="popup-close">×</button>
+    <h5>Tạo playlist mới</h5>
+    <input type="text" id="new-playlist-name" placeholder="Nhập tên playlist..." />
+    <button id="create-confirm" disabled>Tạo mới</button>
+  </div>
+</div>
+
+<div id="select-playlist-popup" class="popup-overlay" style="display: none;">
+  <div class="popup-box">
+    <button class="popup-close" id="close-playlist-select">×</button>
+    <h3>Chọn playlist để thêm vào</h3>
+    <ul id="select-playlist-list" style="list-style: none; padding: 0;"></ul>
+  </div>
+</div>
+</body>
+</html>
