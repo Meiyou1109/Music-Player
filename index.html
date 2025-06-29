@@ -42,6 +42,7 @@
             <input type="checkbox" id="select-all-playlist"> Chọn tất cả
             <button id="add-to-present-playlist">➕ Vào danh sách phát hiện tại</button>
             <button id="add-to-playlist-playlist">📁 Vào playlist khác</button>
+            <button id="remove-from-this-playlist">✖️ Xóa khỏi playlist này</button>
           </div>
         <ul id="playlist-songs" class="list-group"></ul>
       </div>
@@ -68,6 +69,9 @@
         <button id="repeat" class="btn btn-light btn-sm">🔁</button>
       </div>
       <div class="progress-container">
+        <button id="add-to-playlist-current" title="Thêm vào playlist">
+          <img src="assets/star.png" alt="Add to playlist" style="width: 16px; height: 16px;">
+        </button>
         <span id="current-time">00:00</span>
         <input type="range" id="progress" value="0" max="100" step="0.1" class="form-range" disabled>
         <span id="duration">00:00</span>
@@ -80,8 +84,8 @@
       <div class="volume-wrapper">
         <button id="mute-toggle">🔊</button>
         <input type="range" id="volume" value="100" max="100" step="0.1" class="form-range" />
-        <button id="toggle-present-sidebar" class="btn btn-light btn-sm">
-        <img src="resources\playlist.png" alt="Present Playlist" style="width: 18px; height: 18px;" />
+        <button id="toggle-present-sidebar" class="btn btn-light btn-sm" title="Danh sách phát hiện tại">
+        <img src="assets\playlist.png" alt="Present Playlist" style="width: 18px; height: 18px;" />
       </button>
       </div>
       
